@@ -14,7 +14,9 @@ jobs:
         git config user.name "sif741852014"
         git config user.email "asiftkmohammed@gmail.com"
     - name: push
+      env:
+        GITHUB_TOKEN: ${{ secrets.pat }}
       run: |
         TAG_NAME="build-$(date +'%Y%m%d%H%M%S')"
         git tag $TAG_NAME
-        git push origin $TAG_NAME 
+        git push https://$GITHUB_TOKEN@github.com/asif741852014/settingdockeraction.git $TAG_NAME 
