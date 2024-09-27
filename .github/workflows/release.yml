@@ -1,0 +1,24 @@
+name: Create Release
+on:
+  push:
+    tags:
+      - 'build-*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}  # Use this to get just the tag name
+        release_name: Release ${{ github.ref_name }}  # Name of the release
+        draft: false
+        prerelease: false
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
