@@ -15,7 +15,7 @@ jobs:
         git config user.email "asiftkmohammed@gmail.com"
     - name: push
       env:
-        GITHUB_TOKEN: ${{ secrets.pat }}
+        GITHUB_TOKEN: ${{ secrets.PAT }}
       run: |
         TAG_NAME="build-$(date +'%Y%m%d%H%M%S')"
         git tag $TAG_NAME
