@@ -21,4 +21,5 @@ jobs:
         TAG_NAME="build-$(date +'%Y%m%d%H%M%S')"
         echo $TAG_NAME
         git tag $TAG_NAME
-        git push https://x-access-token:${GITHUB_TOKEN}@github.com/asif741852014/settingdockeraction.git $TAG_NAME
+        echo "Pushing tag $TAG_NAME"
+        git push https://x-access-token:${GITHUB_TOKEN}@github.com/asif741852014/settingdockeraction.git $TAG_NAME || (echo "Push failed with exit code $?"; exit 1)
